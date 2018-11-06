@@ -1,0 +1,88 @@
+select * from northwind.customers;
+
+select distinct northwind.customers.Country 
+from northwind.customers;
+
+select * from northwind.customers
+where northwind.customers.CustomerID like 'BL%';
+
+select * from northwind.orders
+limit 0, 100;
+
+select * from northwind.customers
+where northwind.customers.PostalCode = 1010 
+OR northwind.customers.PostalCode = 3012
+OR northwind.customers.PostalCode = 12209
+OR northwind.customers.PostalCode = 05023;
+
+select * from northwind.orders
+where not northwind.orders.ShipRegion = 'null';
+
+select * from northwind.customers
+order  by northwind.customers.Country, northwind.customers.City;
+
+INSERT INTO northwind.customers (CustomerID, CompanyName, ContactName)
+VALUES ('QWERT', 'The coffee Shop', 'Jane Doe');
+
+update northwind.orders
+set northwind.orders.ShipRegion = 'EuroZone'
+where northwind.orders.ShipCountry = 'France';
+
+delete from northwind.`order details`
+where northwind.`order details`.Quantity = 1;
+
+SELECT AVG(northwind.`order details`.Quantity) 
+FROM northwind.`order details`;
+
+SELECT max(northwind.`order details`.Quantity) 
+FROM northwind.`order details`;
+
+SELECT min(northwind.`order details`.Quantity) 
+FROM northwind.`order details`;
+
+SELECT AVG(northwind.`order details`.Quantity) 
+FROM northwind.`order details`
+group by northwind.`order details`.OrderID;
+
+SELECT min(northwind.`order details`.Quantity) 
+FROM northwind.`order details`
+group by northwind.`order details`.OrderID;
+
+SELECT max(northwind.`order details`.Quantity) 
+FROM northwind.`order details`
+group by northwind.`order details`.OrderID;
+
+SELECT northwind.orders.CustomerID
+from northwind.orders
+where northwind.orders.OrderID = '10290';
+
+SELECT northwind.orders.OrderID, northwind.customers.CompanyName
+FROM northwind.orders
+INNER JOIN northwind.customers ON northwind.orders.CustomerID = Customers.CustomerID;
+
+
+SELECT northwind.customers.ContactName, northwind.orders.OrderID
+FROM northwind.customers
+LEFT JOIN northwind.orders ON northwind.customers.CustomerID = northwind.orders.CustomerID
+ORDER BY northwind.customers.ContactName;
+
+SELECT northwind.customers.ContactName, northwind.orders.OrderID
+FROM northwind.customers
+RIGHT JOIN northwind.orders ON northwind.customers.CustomerID = northwind.orders.CustomerID
+ORDER BY northwind.customers.ContactName;
+
+select northwind.employees.FirstName
+from northwind.employees
+where northwind.employees.ReportsTo = null;
+
+
+select northwind.employees.FirstName
+from northwind.employees
+where northwind.employees.ReportsTo = 2;
+
+
+
+
+
+
+
