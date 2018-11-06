@@ -16,7 +16,7 @@ OR northwind.customers.PostalCode = 12209
 OR northwind.customers.PostalCode = 05023;
 
 select * from northwind.orders
-where not northwind.orders.ShipRegion = 'null';
+where not northwind.orders.ShipRegion is null;
 
 select * from northwind.customers
 order  by northwind.customers.Country, northwind.customers.City;
@@ -73,7 +73,7 @@ ORDER BY northwind.customers.ContactName;
 
 select northwind.employees.FirstName
 from northwind.employees
-where northwind.employees.ReportsTo = null;
+where northwind.employees.ReportsTo is null;
 
 
 select northwind.employees.FirstName
